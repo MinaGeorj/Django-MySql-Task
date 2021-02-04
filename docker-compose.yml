@@ -1,0 +1,25 @@
+version: '3'
+services:
+  db:
+    image: mysql:8
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_DATABASE='task'
+      - MYSQL_USER='maww'
+      - MYSQL_PASSWORD='password'
+      - MYSQL_ROOT_PASSWORD='Minagst4'
+    volumes:
+      - my-db:/var/lib/mysql
+  web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+      - /tmp/app/mysqld:/run/mysqld
+    depends_on:
+      - db
+volumes:
+  my-db:
