@@ -6,7 +6,8 @@ A) Get containers up: `docker-compose up`. <br/><br/>
 B) Log into MySql container as a root user `mysql -u root` <br/><br/>
 C) Create a new user to allow our Django application to communicate with our MySql database. <br/>
     `CREATE USER 'maww'@'%' IDENTIFIED WITH mysql_native_password BY 'password';`<br/>
-    `grant all on *.* to 'maww'@'%';` <br/><br/>
+    `grant all on *.* to 'maww'@'%';` <br/>
+    `CREATE DATABASE task`<br/><br/>
 D) Stop the containers: `docker-compose down` <br/><br/>
 E) Migrate the database: `docker-compose run --rm web python manage.py migrate` <br/><br/>
 F) And finally: `docker-compose up` <br/><br/>
